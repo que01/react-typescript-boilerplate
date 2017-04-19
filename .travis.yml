@@ -5,8 +5,8 @@ node_js:
   - 6
 
 script:
-  - npm run test
   - npm run build
+  - npm run test
 
 before_install:
   - export CHROME_BIN=chromium-browser
