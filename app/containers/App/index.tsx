@@ -23,9 +23,9 @@ class App extends React.Component<IAppProps, {}> {
     return (
       <div className={styles.wrapper}>
         <Helmet
-          titleTemplate="%s - React.js Boilerplate"
+          titleTemplate="%s - App"
         >
-          <meta name="description" content="A React.js Boilerplate application" />
+          {/*<meta name="description" content="app description" />*/}
         </Helmet>
         {this.props.children}
       </div>

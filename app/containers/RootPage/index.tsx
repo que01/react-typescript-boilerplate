@@ -10,6 +10,7 @@ import { push, RouterAction} from 'react-router-redux';
 
 import messages from './messages';
 import { FormattedMessage } from 'react-intl';
+import { Helmet } from 'react-helmet';
 
 interface IProps {
   dispatch?: (action: RouterAction) => void;
@@ -29,6 +30,9 @@ export class RootPage extends React.Component<IProps, {}> {
   public render() {
     return (
       <article>
+        <Helmet>
+          <title>Root</title>
+        </Helmet>
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
