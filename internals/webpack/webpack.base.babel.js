@@ -22,7 +22,7 @@ module.exports = (options) => ({
   module: {
     loaders: [{
       test: /\.tsx?$/,
-      loader: 'react-hot-loader!awesome-typescript-loader',
+      loader: options.tsLoaders,
     }, {
       test: /\.(scss|sass)$/,
       include: /app/,
@@ -140,24 +140,6 @@ module.exports = (options) => ({
               }),
             ],
             sass: [
-              require('postcss-partial-import')(),
-              // TODO: needed?
-              /* require('postcss-mixins'),
-               require('postcss-advanced-variables'),
-               require('postcss-custom-selectors'),
-               require('postcss-custom-media'),
-               require('postcss-custom-properties'),
-               require('postcss-media-minmax'),
-               require('postcss-color-function'),
-               require('postcss-current-selector'),
-               require('postcss-nested-ancestors'),
-               require('postcss-nesting'),
-               require('postcss-nested'),
-               // require('postcss-atroot'),
-               require('postcss-property-lookup'),
-               require('postcss-extend'),
-               require('postcss-selector-matches'),
-               require('postcss-selector-not'), */
               require('autoprefixer')({ // Allow future CSS features to be used, also auto-prefixes the CSS...
                 browsers: ['last 2 versions', 'IE > 10'], // ...based on this browser list
               }),
