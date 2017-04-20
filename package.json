@@ -1,15 +1,26 @@
 {
-  "name": "react-boilerplate",
-  "version": "3.2.1",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "react-typescript-boilerplate",
+  "version": "0.1.0",
+  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices (typescript)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mxstbr/react-boilerplate.git"
+    "url": "git://github.com/StrikeForceZero/react-typescript-boilerplate.git"
   },
   "engines": {
     "npm": ">=3"
   },
-  "author": "Max Stoiber",
+  "contributors": [
+    {
+      "name": "Max Stoiber",
+      "email": "contact@mxstbr.com",
+      "url": "https://github.com/mxstbr/"
+    },
+    {
+      "name": "Brett Striker",
+      "email": "StrikeForceZero@gmail.com",
+      "url": "https://github.com/StrikeForceZero/"
+    }
+  ],
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
