@@ -19,7 +19,7 @@ module.exports = require('./webpack.base.babel')({
 
   sassLoaders: ExtractTextPlugin.extract({
     fallbackLoader: 'style-loader',
-    loader: 'css-loader?-autoprefixer&importLoaders=2!sass-loader!postcss-loader?parser=postcss-scss',
+    loader: 'css-loader?-autoprefixer&importLoaders=2!postcss-loader?parser=postcss-scss!sass-loader',
   }),
 
   // We use ExtractTextPlugin so we get a separate CSS file instead
