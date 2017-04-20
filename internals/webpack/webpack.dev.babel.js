@@ -37,8 +37,9 @@ module.exports = require('./webpack.base.babel')({
   // Add development plugins
   plugins: dependencyHandlers().concat(plugins), // eslint-disable-line no-use-before-define
 
-  // Load Sass/Scss
+  tsLoaders: 'react-hot-loader!awesome-typescript-loader',
 
+  // Load Sass/Scss
   sassLoaders: 'style-loader!css-loader?localIdentName=[local]__[path][name]__[hash:base64:5]&importLoaders=2&sourceMap!postcss-loader?pack=sass&parser=postcss-scss!sass-loader',
 
   // Load the CSS in a style tag in development

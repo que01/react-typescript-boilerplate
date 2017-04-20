@@ -22,7 +22,7 @@ module.exports = (options) => ({
   module: {
     loaders: [{
       test: /\.tsx?$/,
-      loader: 'react-hot-loader!awesome-typescript-loader',
+      loader: options.tsLoaders,
     }, {
       test: /\.(scss|sass)$/,
       include: /app/,
