@@ -180,6 +180,7 @@
   },
   "stylelint": {
     "extends": "stylelint-config-standard",
+    "ignoreFiles": "./app/vendor/**/*",
     "rules": {
       "color-hex-case": "upper",
       "string-quotes": "single",

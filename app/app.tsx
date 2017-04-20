@@ -68,6 +68,48 @@ const rootRoute = {
   childRoutes: createRoutes(store),
 };
 
+// Setup a HTML Element attribute white-list for react
+// Generate Vendor Flexbox attributes;
+const flexSizeConditionOp = [ 'gt', 'lt' ];
+const flexSizes           = [ 'xs', 'sm', 'md', 'lg', 'xl' ];
+const flexBaseAttributes  = [
+  'layout',
+  'flex',
+  'flex-order',
+  'flex-offset',
+  'layout-align',
+  'layout-fill',
+  'layout-wrap',
+  'layout-nowrap',
+  'layout-margin',
+  'layout-padding',
+  'show',
+  'hide',
+];
+
+// Loop through and generate all flexbox attrs
+const flexAttributes = [];
+for (const base of flexBaseAttributes) {
+  flexAttributes.push(base);
+  for (const size of flexSizes) {
+    flexAttributes.push(`${base}-${size}`);
+    for (const condition of flexSizeConditionOp) {
+      if (size === 'xs' && condition === 'lt' || size === 'xl' && condition === 'gt') {
+        continue;
+      }
+      flexAttributes.push(`${base}-${condition}-${size}`);
+    }
+  }
+}
+
+// Tell React what attrs are white-listed
+const DOMProperty = require('react-dom/lib/DOMProperty');
+DOMProperty.injection.injectDOMPropertyConfig({
+  Properties:        {},
+  isCustomAttribute: (attributeName) => flexAttributes.includes(attributeName),
+});
+require('app/vendor/angular-material/flexbox.css');
+
 const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
