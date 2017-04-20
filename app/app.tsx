@@ -32,7 +32,7 @@ import LanguageProvider from 'app/containers/LanguageProvider';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
-const styles = require('app/containers/App/styles.css');
+const styles = require('app/containers/App/styles.scss');
 const openSansObserver = new FontFaceObserver('Open Sans', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body

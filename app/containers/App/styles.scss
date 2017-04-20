@@ -1,9 +1,20 @@
 /* Global styles */
 
+@import '~sanitize.css';
+@import '~react-md/src/scss/react-md';
+
+// Include all components
+@include react-md-everything;
+
 html,
 body {
   height: 100%;
   width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 body {

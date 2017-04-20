@@ -16,6 +16,8 @@ interface IProps {
   dispatch?: (action: RouterAction) => void;
 }
 
+import { Card, CardTitle, CardActions, Button } from 'react-md';
+
 export class RootPage extends React.Component<IProps, {}> {
 
   constructor(props) {
@@ -33,9 +35,9 @@ export class RootPage extends React.Component<IProps, {}> {
         <Helmet>
           <title>Root</title>
         </Helmet>
-        <h1>
-          <FormattedMessage {...messages.header} />
-        </h1>
+        <Card>
+          <CardTitle title={<FormattedMessage {...messages.header} />} />
+        </Card>
       </article>
     );
   }

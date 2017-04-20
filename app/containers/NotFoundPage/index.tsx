@@ -11,6 +11,9 @@ import { push, RouterAction} from 'react-router-redux';
 import messages from './messages';
 import { FormattedMessage } from 'react-intl';
 
+import { Card, CardTitle, CardActions, Button } from 'react-md';
+import { Helmet } from 'react-helmet';
+
 interface INotFoundProps {
   dispatch?: (action: RouterAction) => void;
 }
@@ -29,14 +32,19 @@ export class NotFound extends React.Component<INotFoundProps, {}> {
   public render() {
     return (
       <article>
-        <h1>
-          <FormattedMessage {...messages.header} />
-        </h1>
-        <button
-          onClick={this.redirect}
-        >
-          <FormattedMessage {...messages.rootButton} />
-        </button>
+        <Helmet>
+          <title>Page not found</title>
+        </Helmet>
+        <Card>
+          <CardTitle title={<FormattedMessage {...messages.header} />} />
+          <CardActions>
+            <Button
+              primary
+              onClick={this.redirect}
+              label={<FormattedMessage {...messages.rootButton} />}
+            />
+          </CardActions>
+        </Card>
       </article>
     );
   }

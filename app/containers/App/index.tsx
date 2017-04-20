@@ -9,25 +9,51 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
 
-// Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
-import 'sanitize.css/sanitize.css';
+import { Toolbar } from 'react-md';
 
-const styles = require('./styles.css');
+// Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
+
+const styles = require('./styles.scss');
 
 interface IAppProps {
   children?: React.ReactNode;
 }
 
-class App extends React.Component<IAppProps, {}> {
+export interface IState {
+  title?: string;
+}
+
+class App extends React.Component<IAppProps, IState> {
+
+  public state = {};
+
+  constructor(props) {
+    super(props);
+
+    this._helmetStateChange = this._helmetStateChange.bind(this);
+  }
+
+  private _helmetStateChange(newState: Helmet['state']) {
+    this.setState({
+      title: newState.title,
+    });
+  }
+
   public render() {
     return (
       <div className={styles.wrapper}>
         <Helmet
           titleTemplate="%s - App"
+          onChangeClientState={this._helmetStateChange}
         >
           {/*<meta name="description" content="app description" />*/}
         </Helmet>
-        {this.props.children}
+        <Toolbar
+          fixed
+          colored
+          title={(Helmet.peek() || {title: ''}).title.toString()}
+        />
+        <div className="md-toolbar-relative">{this.props.children}</div>
       </div>
     );
   }
