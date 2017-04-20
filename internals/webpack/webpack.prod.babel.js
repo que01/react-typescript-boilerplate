@@ -17,6 +17,8 @@ module.exports = require('./webpack.base.babel')({
     chunkFilename: '[name].[chunkhash].chunk.js',
   },
 
+  tsLoaders: 'awesome-typescript-loader',
+
   // We use ExtractTextPlugin so we get a separate CSS file instead
   // of the CSS being in the JS and injected as a style tag
   cssLoaders: ExtractTextPlugin.extract({
