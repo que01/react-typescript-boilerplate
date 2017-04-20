@@ -24,30 +24,31 @@ export default function createRoutes(store): IExtendedRouteProps[] {
   return [
     {
       path: '/',
-      name: 'home',
+      name: 'root',
       getComponent(nextState, cb) {
+        /*
+
+        Example:
+
         const importModules = Promise.all([
-          System.import('app/containers/HomePage/reducer'),
-          System.import('app/containers/HomePage/sagas'),
-          System.import('app/containers/HomePage'),
+          System.import('app/containers/RootPage/reducer'),
+          System.import('app/containers/RootPage/sagas'),
+          System.import('app/containers/RootPage'),
         ]);
 
         const renderRoute = loadModule(cb);
 
         importModules.then(([reducer, sagas, component]) => {
-          injectReducer('home', reducer.default);
+          injectReducer('root', reducer.default);
           injectSagas(sagas.default);
 
           renderRoute(component);
         });
 
         importModules.catch(errorLoading);
-      },
-    }, {
-      path: '/features',
-      name: 'features',
-      getComponent(nextState, cb) {
-        System.import('app/containers/FeaturePage')
+        */
+
+        System.import('app/containers/RootPage')
           .then(loadModule(cb))
           .catch(errorLoading);
       },

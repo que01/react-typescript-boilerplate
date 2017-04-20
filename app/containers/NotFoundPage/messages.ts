@@ -6,12 +6,12 @@
 import { defineMessages } from 'react-intl';
 
 export default defineMessages({
-  header: {
+  header:     {
     id: 'boilerplate.containers.NotFoundPage.header',
     defaultMessage: 'Page not found.',
   },
-  homeButton: {
-    id: 'boilerplate.containers.NotFoundPage.home',
+  rootButton: {
+    id: 'boilerplate.containers.NotFoundPage.root',
     defaultMessage: 'Home',
   },
 });

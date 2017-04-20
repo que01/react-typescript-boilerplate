@@ -1,5 +1,5 @@
 /**
- * NotFoundPage
+ * RootPage
  *
  * This is the page we show when the user visits a url that doesn't have a route
  */
@@ -11,11 +11,11 @@ import { push, RouterAction} from 'react-router-redux';
 import messages from './messages';
 import { FormattedMessage } from 'react-intl';
 
-interface INotFoundProps {
+interface IProps {
   dispatch?: (action: RouterAction) => void;
 }
 
-export class NotFound extends React.Component<INotFoundProps, {}> {
+export class RootPage extends React.Component<IProps, {}> {
 
   constructor(props) {
     super(props);
@@ -32,15 +32,10 @@ export class NotFound extends React.Component<INotFoundProps, {}> {
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
-        <button
-          onClick={this.redirect}
-        >
-          <FormattedMessage {...messages.rootButton} />
-        </button>
       </article>
     );
   }
 }
 
 // Wrap the component to inject dispatch and state into it
-export default connect()(NotFound);
+export default connect()(RootPage);

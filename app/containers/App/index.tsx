@@ -12,11 +12,6 @@ import Helmet from 'react-helmet';
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
 
-import Img from 'app/components/Img';
-import Footer from 'app/components/Footer';
-const Banner = require('./banner-metal.jpg');
-import A from 'app/components/A';
-
 const styles = require('./styles.css');
 
 interface IAppProps {
@@ -32,11 +27,7 @@ class App extends React.Component<IAppProps, {}> {
         >
           <meta name="description" content="A React.js Boilerplate application" />
         </Helmet>
-        <A className={styles.logoWrapper} href="https://twitter.com/mxstbr">
-          <Img className={styles.logo} src={Banner} alt="react-boilerplate - Logo"/>
-        </A>
         {this.props.children}
-        <Footer />
       </div>
     );
   }
