@@ -17,6 +17,11 @@ module.exports = require('./webpack.base.babel')({
     chunkFilename: '[name].[chunkhash].chunk.js',
   },
 
+  sassLoaders: ExtractTextPlugin.extract({
+    fallbackLoader: 'style-loader',
+    loader: 'css-loader?-autoprefixer&importLoaders=2!sass-loader!postcss-loader?parser=postcss-scss',
+  }),
+
   // We use ExtractTextPlugin so we get a separate CSS file instead
   // of the CSS being in the JS and injected as a style tag
   cssLoaders: ExtractTextPlugin.extract({

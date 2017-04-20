@@ -26,6 +26,7 @@ module.exports = {
     loaders: [
       { test: /\.tsx?$/, loader: 'awesome-typescript-loader', exclude: /node_modules/ },
       { test: /\.json$/, loader: 'json-loader' },
+      { test: /\.s(a|c)ss$/, loader: 'null-loader' },
       { test: /\.css$/, loader: 'null-loader' },
 
       // sinon.js--aliased for enzyme--expects/requires global vars.
