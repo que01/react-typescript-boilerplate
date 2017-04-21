@@ -40,7 +40,7 @@ describe('<HomePage />', () => {
   });
 
   it('should render fetch the repos on mount if a username exists', () => {
-    const submitSpy = expect.createSpy();
+    const submitSpy = expect.createSpy() as any as () => React.EventHandler<React.FormEvent<any>>;
     mount(
       <IntlProvider locale="en">
         <HomePage
