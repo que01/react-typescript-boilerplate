@@ -45,6 +45,21 @@ module.exports = {
   },
 
   plugins: [
+    // required to fail test when tsc errors emit
+    function CustomErrorHandlerPlugin() {
+      this.plugin(
+        'done', (stats) => {
+          if (process.argv.indexOf('--watch') > -1) {
+            return;
+          }
+          if (stats.compilation.errors && stats.compilation.errors.length) {
+            console.error(stats.compilation.errors.join('\n\n')); // eslint-disable-line no-console
+            process.exit(1); // or throw new Error('webpack build failed.');
+          }
+        }
+      );
+    },
+
     new TsConfigPathsPlugin(),
 
     new webpack.ProvidePlugin({
