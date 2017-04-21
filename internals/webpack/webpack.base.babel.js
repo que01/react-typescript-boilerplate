@@ -26,7 +26,7 @@ module.exports = (options) => ({
     }, {
       test: /\.(scss|sass)$/,
       include: /app/,
-      loader: options.sassLoaders,
+      loaders: options.sassLoaders,
     }, {
       // Transform our own .css files with PostCSS and CSS-modules
       test: /\.css$/,

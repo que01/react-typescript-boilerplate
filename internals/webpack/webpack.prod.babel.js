@@ -19,9 +19,26 @@ module.exports = require('./webpack.base.babel')({
 
   tsLoaders: 'react-hot-loader!awesome-typescript-loader',
 
+  // Load Sass/Scss
   sassLoaders: ExtractTextPlugin.extract({
-    fallbackLoader: 'style-loader',
-    loader: 'css-loader?-autoprefixer&importLoaders=2!postcss-loader?parser=postcss-scss!sass-loader',
+    fallback: 'style-loader',
+    use: [
+      {
+        loader: 'css-loader',
+        options: {
+          '-autoprefixer': true,
+          importLoaders: 2,
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          pack: 'sass',
+          parser: 'postcss-scss',
+        },
+      },
+      'sass-loader',
+    ],
   }),
 
   // We use ExtractTextPlugin so we get a separate CSS file instead
