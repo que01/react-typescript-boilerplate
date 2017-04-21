@@ -12,6 +12,9 @@ import messages from './messages';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 
+import * as Moment from 'moment';
+import 'moment-timezone'; // inject timezone functions into moment
+
 interface IProps {
   dispatch?: (action: RouterAction) => void;
 }
@@ -28,6 +31,17 @@ export class RootPage extends React.Component<IProps, {}> {
   }
 
   public render() {
+
+    const targetTimezones = [
+      [`Local (${Moment.tz.guess()})`, Moment.tz.guess()],
+      ['Eastern', 'Eastern'],
+      ['London', 'Europe/London'],
+      ['Pacific', 'Pacific'],
+    ].map(([label, timezone]) => {
+      console.log(label, timezone, Moment().tz(timezone));
+      return (<div key={timezone}>{label}: {Moment().tz(timezone).format('YYYY-MM-DD hh:mm:ss A')}</div>);
+    });
+
     return (
       <article>
         <Helmet>
@@ -36,6 +50,9 @@ export class RootPage extends React.Component<IProps, {}> {
         <h1>
           <FormattedMessage {...messages.header} />
         </h1>
+        <div>
+          {targetTimezones}
+        </div>
       </article>
     );
   }
