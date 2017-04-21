@@ -39,6 +39,7 @@ export class NotFound extends React.Component<INotFoundProps, {}> {
           <CardTitle title={<FormattedMessage {...messages.header} />} />
           <CardActions>
             <Button
+              flat
               primary
               onClick={this.redirect}
               label={<FormattedMessage {...messages.rootButton} />}
