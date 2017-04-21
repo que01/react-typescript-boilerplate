@@ -27,8 +27,18 @@ module.exports = require('./webpack.base.babel')({
   // We use ExtractTextPlugin so we get a separate CSS file instead
   // of the CSS being in the JS and injected as a style tag
   cssLoaders: ExtractTextPlugin.extract({
-    fallbackLoader: 'style-loader',
-    loader: 'css-loader?modules&-autoprefixer&importLoaders=1!postcss-loader',
+    fallback: 'style-loader',
+    use: [
+      {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+          '-autoprefixer': true,
+          importLoaders: 1,
+        },
+      },
+      'postcss-loader',
+    ],
   }),
 
   plugins: [
@@ -58,9 +68,6 @@ module.exports = require('./webpack.base.babel')({
     // OccurrenceOrderPlugin is needed for long-term caching to work properly.
     // See http://mxs.is/googmv
     new webpack.optimize.OccurrenceOrderPlugin(true),
-
-    // Merge all duplicate modules
-    new webpack.optimize.DedupePlugin(),
 
     // Minify and optimize the JavaScript
     new webpack.optimize.UglifyJsPlugin({
