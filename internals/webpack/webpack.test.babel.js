@@ -56,7 +56,6 @@ module.exports = {
             console.error(stats.compilation.errors.join('\n\n')); // eslint-disable-line no-console
             process.exit(1); // or throw new Error('webpack build failed.');
           }
-          process.exit(0);
         }
       );
     },
