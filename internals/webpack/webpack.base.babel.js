@@ -22,12 +22,12 @@ module.exports = (options) => ({
   module: {
     loaders: [{
       test: /\.tsx?$/,
-      loader: options.tsLoaders,
+      use: options.tsLoaders,
     }, {
       // Transform our own .css files with PostCSS and CSS-modules
       test: /\.css$/,
       exclude: /node_modules/,
-      loaders: options.cssLoaders,
+      use: options.cssLoaders,
     }, {
       // Do not transform vendor's CSS with CSS-modules
       // The point is that they remain in global scope.
@@ -36,14 +36,18 @@ module.exports = (options) => ({
       // So, no need for ExtractTextPlugin here.
       test: /\.css$/,
       include: /node_modules/,
-      loaders: ['style-loader', 'css-loader'],
+      use: [
+        'style-loader',
+        'css-loader',
+      ],
     }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
-      loader: 'file-loader',
+      use: 'file-loader',
     }, {
       test: /\.(jpe?g|png|gif)$/,
-      loader: [
-        'file-loader', {
+      use: [
+        'file-loader',
+        {
           loader: 'image-webpack-loader',
           options: {
             mozjpeg: {
@@ -64,13 +68,13 @@ module.exports = (options) => ({
       ],
     }, {
       test: /\.html$/,
-      loader: 'html-loader',
+      use: 'html-loader',
     }, {
       test: /\.json$/,
-      loader: 'json-loader',
+      use: 'json-loader',
     }, {
       test: /\.(mp4|webm)$/,
-      loader: 'url-loader?limit=10000',
+      use: 'url-loader?limit=10000',
     }],
   },
   plugins: options.plugins.concat([
