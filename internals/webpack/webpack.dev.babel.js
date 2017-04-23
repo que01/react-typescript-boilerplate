@@ -39,7 +39,10 @@ module.exports = require('./webpack.base.babel')({
   // Add development plugins
   plugins: dependencyHandlers().concat(plugins), // eslint-disable-line no-use-before-define
 
-  tsLoaders: 'react-hot-loader!awesome-typescript-loader',
+  tsLoaders: [
+    'react-hot-loader',
+    'awesome-typescript-loader',
+  ],
 
   // Load Sass/Scss
   sassLoaders: [
