@@ -101,7 +101,7 @@ could already read the content.
 
 [FontFaceObserver](https://github.com/bramstein/fontfaceobserver) adds a class
 to the `body` when the fonts have loaded. (see [`app.js`](../../app/app.js#L26-L36)
-and [`App/styles.css`](../../app/containers/App/styles.css))
+and [`App/styles.css`](../../app/containers/App/styles.module.css))
 
 ### Adding a new font
 
