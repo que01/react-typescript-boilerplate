@@ -97,12 +97,6 @@ declare module "react-router-scroll" {
   export const useScroll: Function; //TODO: needs type definition
 }
 
-interface NodeModule {
-  hot: {
-    accept: (path: string, callback: () => void ) => void
-  };
-}
-
 interface Window {
   Intl: any;
   swUpdate: boolean;

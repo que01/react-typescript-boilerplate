@@ -50,6 +50,27 @@ module.exports = require('./webpack.base.babel')({
     {
       loader: 'css-loader',
       options: {
+        modules: false,
+        importLoaders: 2,
+        sourceMap: true,
+      },
+    },
+    {
+      loader: 'postcss-loader',
+      options: {
+        pack: 'sass',
+        parser: 'postcss-scss',
+      },
+    },
+    'sass-loader',
+  ],
+
+  // Load Sass/Scs PostCSS Modules
+  sassLoadersLocal: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
         localIdentName: '[local]__[path][name]__[hash:base64:5]',
         modules: true,
         importLoaders: 2,
@@ -68,6 +89,19 @@ module.exports = require('./webpack.base.babel')({
 
   // Load the CSS in a style tag in development
   cssLoaders: [
+    'style-loader',
+    {
+      loader: 'css-loader',
+      options: {
+        modules: false,
+        importLoaders: 1,
+        sourceMap: true,
+      },
+    },
+    'postcss-loader',
+  ],
+
+  cssLoadersLocal: [
     'style-loader',
     {
       loader: 'css-loader',
