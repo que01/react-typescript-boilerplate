@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const styles = require('./styles.css');
+const styles = require('./styles.module.css');
 
 class H1 extends React.Component<{}, {}> {
   public render() {

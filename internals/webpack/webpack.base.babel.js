@@ -24,8 +24,13 @@ module.exports = (options) => ({
       test: /\.tsx?$/,
       use: options.tsLoaders,
     }, {
-      // Transform our own .css files with PostCSS and CSS-modules
-      test: /\.css$/,
+      // Transform our own .local.css files with PostCSS and CSS-modules
+      test: /\.module\.css$/,
+      exclude: /node_modules/,
+      use: options.cssLoadersLocal,
+    }, {
+      // Transform our own .css files with PostCSS
+      test: /^((?!\.module(\.css)$).)*\1$/,
       exclude: /node_modules/,
       use: options.cssLoaders,
     }, {
