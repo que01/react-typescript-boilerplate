@@ -11,7 +11,7 @@ import { selectLocale } from '../LanguageProvider/selectors';
 import { changeLocale } from '../LanguageProvider/actions';
 import { appLocales } from '../../i18n';
 import { createSelector } from 'reselect';
-const styles = require('./styles.css');
+const styles = require('./styles.module.css');
 import messages from './messages';
 import Toggle from 'app/components/Toggle';
 
