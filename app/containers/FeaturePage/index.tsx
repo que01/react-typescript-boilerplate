@@ -13,7 +13,7 @@ import { FormattedMessage } from 'react-intl';
 import Button from 'app/components/Button';
 import H1 from 'app/components/H1';
 
-const styles = require('./styles.css');
+const styles = require('./styles.module.css');
 
 interface IFeaturePageProps {
   dispatch?: (action: RouterAction) => void;

@@ -17,7 +17,7 @@ import Footer from 'app/components/Footer';
 const Banner = require('./banner-metal.jpg');
 import A from 'app/components/A';
 
-const styles = require('./styles.css');
+const styles = require('./styles.module.css');
 
 interface IAppProps {
   children?: React.ReactNode;

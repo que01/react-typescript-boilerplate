@@ -33,7 +33,7 @@ import List from 'app/components/List';
 import ListItem from 'app/components/ListItem';
 import LoadingIndicator from 'app/components/LoadingIndicator';
 
-const styles = require('./styles.css');
+const styles = require('./styles.module.css');
 
 interface IHomePageProps {
   changeRoute?: (route: string) => void;

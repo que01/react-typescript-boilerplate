@@ -8,7 +8,7 @@
 
 import * as React from 'react';
 
-const styles = require('./styles.css');
+const styles = require('./styles.module.css');
 
 interface IButtonProps extends React.ClassAttributes<Button> {
   className?: string;
