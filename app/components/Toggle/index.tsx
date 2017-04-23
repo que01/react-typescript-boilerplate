@@ -7,7 +7,7 @@
 import * as React from 'react';
 
 // import { FormattedMessage } from 'react-intl';
-const styles = require('./styles.css');
+const styles = require('./styles.scss');
 import ToggleOption from '../ToggleOption';
 
 interface IMessageMap {

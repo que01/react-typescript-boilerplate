@@ -22,16 +22,16 @@ module.exports = (options) => ({
   module: {
     loaders: [{
       test: /\.tsx?$/,
-      loader: options.tsLoaders,
+      use: options.tsLoaders,
     }, {
       test: /\.(scss|sass)$/,
       include: /app/,
-      loader: options.sassLoaders,
+      use: options.sassLoaders,
     }, {
       // Transform our own .css files with PostCSS and CSS-modules
       test: /\.css$/,
       exclude: /node_modules/,
-      loader: options.cssLoaders,
+      use: options.cssLoaders,
     }, {
       // Do not transform vendor's CSS with CSS-modules
       // The point is that they remain in global scope.
@@ -40,25 +40,45 @@ module.exports = (options) => ({
       // So, no need for ExtractTextPlugin here.
       test: /\.css$/,
       include: /node_modules/,
-      loaders: ['style-loader', 'css-loader'],
+      use: [
+        'style-loader',
+        'css-loader',
+      ],
     }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
-      loader: 'file-loader',
+      use: 'file-loader',
     }, {
-      test: /\.(jpg|png|gif)$/,
-      loaders: [
+      test: /\.(jpe?g|png|gif)$/,
+      use: [
         'file-loader',
-        'image-webpack-loader?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}',
+        {
+          loader: 'image-webpack-loader',
+          options: {
+            mozjpeg: {
+              progressive: true,
+            },
+            gifsicle: {
+              interlaced: false,
+            },
+            optipng: {
+              optimizationLevel: 7,
+            },
+            pngquant: {
+              quality: '65-90',
+              speed: 4,
+            },
+          },
+        },
       ],
     }, {
       test: /\.html$/,
-      loader: 'html-loader',
+      use: 'html-loader',
     }, {
       test: /\.json$/,
-      loader: 'json-loader',
+      use: 'json-loader',
     }, {
       test: /\.(mp4|webm)$/,
-      loader: 'url-loader?limit=10000',
+      use: 'url-loader?limit=10000',
     }],
   },
   plugins: options.plugins.concat([

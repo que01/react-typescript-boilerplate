@@ -30,6 +30,10 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
+"@types/expect@^1.20.1":
+  version "1.20.1"
+  resolved "https://registry.yarnpkg.com/@types/expect/-/expect-1.20.1.tgz#db794c8a2127e302ed341221a0cba83d51c4e5fc"
+
 "@types/express-serve-static-core@*":
   version "4.0.44"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.0.44.tgz#a1c3bd5d80e93c72fba91a03f5412c47f21d4ae7"
@@ -7961,7 +7965,7 @@ replace-ext@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-0.0.1.tgz#29bbd92078a739f0bcce2b4ee41e837953522924"
 
-request@2, request@^2.55.0, request@^2.61.0, request@^2.72.0, request@^2.74.0, request@^2.81.0:
+request@2, request@^2.61.0, request@^2.72.0, request@^2.81.0:
   version "2.81.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.81.0.tgz#c6928946a0e06c5f8d6f8a9333469ffda46298a0"
   dependencies:
@@ -7988,7 +7992,7 @@ request@2, request@^2.55.0, request@^2.61.0, request@^2.72.0, request@^2.74.0, r
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
-request@2.79.0:
+request@2.79.0, request@^2.55.0, request@^2.74.0:
   version "2.79.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
   dependencies:
