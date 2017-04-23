@@ -101,15 +101,15 @@ could already read the content.
 
 [FontFaceObserver](https://github.com/bramstein/fontfaceobserver) adds a class
 to the `body` when the fonts have loaded. (see [`app.js`](../../app/app.js#L26-L36)
-and [`App/styles.css`](../../app/containers/App/styles.css))
+and [`App/styles.scss`](../../app/containers/App/styles.scss))
 
 ### Adding a new font
 
-1. Either add the `@font-face` declaration to `App/styles.css` or add a `<link>`
+1. Either add the `@font-face` declaration to `App/styles.scss` or add a `<link>`
 tag to the [`index.html`](../../app/index.html). (Don't forget to remove the `<link>`
 for Open Sans from the [`index.html`](../../app/index.html)!)
 
-2. In `App/styles.css`, specify your initial `font-family` in the `body` tag
+2. In `App/styles.scss`, specify your initial `font-family` in the `body` tag
 with only web-save fonts. In the `body.jsFontLoaded` tag, specify your
 `font-family` stack with your web font.
 

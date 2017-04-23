@@ -12,7 +12,7 @@ import Helmet from 'react-helmet';
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
 
-const styles = require('./styles.css');
+const styles = require('./styles.scss');
 
 interface IAppProps {
   children?: React.ReactNode;
