@@ -34,10 +34,10 @@ import LanguageProvider from 'app/containers/LanguageProvider';
 // the index.html file and this observer)
 import 'app/containers/App/global.scss';
 const styles = require('app/containers/App/styles.module.scss');
-const openSansObserver = new FontFaceObserver('Open Sans', {});
+const robotoObserver = new FontFaceObserver('Roboto', {});
 
 // When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
+robotoObserver.load().then(() => {
   document.body.classList.add(styles.fontLoaded);
 }, () => {
   document.body.classList.remove(styles.fontLoaded);
