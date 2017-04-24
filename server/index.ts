@@ -9,7 +9,7 @@ const argv = require('minimist')(process.argv.slice(2)) as {
 };
 import setup from 'server/middlewares/frontendMiddleware';
 const isDev = process.env.NODE_ENV !== 'production';
-interface INgrok { connect(port: number, callback: (err: Error, url: string) => void); };
+interface INgrok { connect(port: number, callback: (err: Error, url: string) => void); }
 const ngrok: INgrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 import { resolve } from 'path';
 const app = Express();
