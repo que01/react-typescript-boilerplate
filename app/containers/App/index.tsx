@@ -12,7 +12,7 @@ import Helmet from 'react-helmet';
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
 
-const styles = require('./styles.module.css');
+const styles = require('./styles.module.scss');
 
 interface IAppProps {
   children?: React.ReactNode;
@@ -21,7 +21,7 @@ interface IAppProps {
 class App extends React.Component<IAppProps, {}> {
   public render() {
     return (
-      <div className={styles.wrapper}>
+      <div>
         <Helmet
           titleTemplate="%s - App"
         >

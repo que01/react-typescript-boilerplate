@@ -17,7 +17,30 @@ module.exports = require('./webpack.base.babel')({
     chunkFilename: '[name].[chunkhash].chunk.js',
   },
 
-  tsLoaders: 'react-hot-loader!awesome-typescript-loader',
+  tsLoaders: 'awesome-typescript-loader',
+
+  // Load Sass/Scss
+  sassLoadersLocal: ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    use: [
+      {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+          '-autoprefixer': true,
+          importLoaders: 2,
+        },
+      },
+      {
+        loader: 'postcss-loader',
+        options: {
+          pack: 'sass',
+          parser: 'postcss-scss',
+        },
+      },
+      'sass-loader',
+    ],
+  }),
 
   // Load Sass/Scss
   sassLoaders: ExtractTextPlugin.extract({
@@ -41,6 +64,21 @@ module.exports = require('./webpack.base.babel')({
     ],
   }),
 
+  cssLoadersLocal: ExtractTextPlugin.extract({
+    fallback: 'style-loader',
+    use: [
+      {
+        loader: 'css-loader',
+        options: {
+          modules: true,
+          '-autoprefixer': true,
+          importLoaders: 1,
+        },
+      },
+      'postcss-loader',
+    ],
+  }),
+
   // We use ExtractTextPlugin so we get a separate CSS file instead
   // of the CSS being in the JS and injected as a style tag
   cssLoaders: ExtractTextPlugin.extract({
@@ -49,7 +87,7 @@ module.exports = require('./webpack.base.babel')({
       {
         loader: 'css-loader',
         options: {
-          modules: true,
+          modules: false,
           '-autoprefixer': true,
           importLoaders: 1,
         },
