@@ -7,7 +7,7 @@ import * as sinon from 'sinon';
 import * as expect from 'expect';
 import { IStubedWindow } from './stubs';
 
-declare var window: IStubedWindow & Window;
+declare const window: IStubedWindow & Window;
 
 
 describe('request', () => {
