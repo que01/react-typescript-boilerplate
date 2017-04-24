@@ -6,6 +6,6 @@ import {
 import {
 } from '../actions';
 
-describe('App Actions', () => {
+/* describe('App Actions', () => {
 
-});
+}); */
