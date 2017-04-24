@@ -13,7 +13,7 @@ import { Toolbar } from 'react-md';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 
-const styles = require('./styles.scss');
+const styles = require('./styles.module.scss');
 
 interface IAppProps {
   children?: React.ReactNode;
@@ -41,7 +41,7 @@ class App extends React.Component<IAppProps, IState> {
 
   public render() {
     return (
-      <div className={styles.wrapper}>
+      <div>
         <Helmet
           titleTemplate="%s - App"
           onChangeClientState={this._helmetStateChange}

@@ -24,15 +24,6 @@ module.exports = (options) => ({
       test: /\.tsx?$/,
       use: options.tsLoaders,
     }, {
-      test: /\.(scss|sass)$/,
-      include: /app/,
-      use: options.sassLoaders,
-    }, {
-      // Transform our own .css files with PostCSS and CSS-modules
-      test: /\.css$/,
-      exclude: /node_modules/,
-      use: options.cssLoaders,
-    }, {
       // Do not transform vendor's CSS with CSS-modules
       // The point is that they remain in global scope.
       // Since we require these CSS files in our JS or CSS files,
@@ -44,6 +35,26 @@ module.exports = (options) => ({
         'style-loader',
         'css-loader',
       ],
+    }, {
+      // Transform our own .css files with PostCSS
+      test: /^((?!\.module).)*(\.css)$/,
+      exclude: [/node_modules/],
+      use: options.cssLoaders,
+    }, {
+      // Transform our own .css files with PostCSS
+      test: /^((?!\.module).)*(\.(scss|sass))$/,
+      exclude: [/node_modules/],
+      use: options.sassLoaders,
+    }, {
+      // Transform our own .local.css files with PostCSS and CSS-modules
+      test: /\.module\.css$/,
+      include: /app/,
+      use: options.cssLoadersLocal,
+    }, {
+      // Transform our own .local.css files with PostCSS and CSS-modules
+      test: /\.module\.(scss|sass)$/,
+      include: /app/,
+      use: options.sassLoadersLocal,
     }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
       use: 'file-loader',
