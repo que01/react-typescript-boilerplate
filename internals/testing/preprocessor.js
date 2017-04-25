@@ -1,7 +1,6 @@
 const tsc = require('typescript');
 const tsConfig = require('../../tsconfig.json');
 const babelJest = require('babel-jest');
-require('babel-polyfill');
 
 module.exports = {
   process(src, path) {
