@@ -19,7 +19,7 @@ import {
 } from 'app/containers/App/selectors';
 
 import {
-  selectUsername,
+  makeSelectUsername,
 } from './selectors';
 
 import { changeUsername } from './actions';
@@ -32,6 +32,7 @@ import H2 from 'app/components/H2';
 import List from 'app/components/List';
 import ListItem from 'app/components/ListItem';
 import LoadingIndicator from 'app/components/LoadingIndicator';
+import ReposList from 'app/components/ReposList';
 
 const styles = require('./styles.module.css');
 
@@ -72,23 +73,13 @@ export class HomePage extends React.Component<IHomePageProps, {}> {
   }
 
   public render() {
-    let mainContent = null;
-
-    // Show a loading indicator when we're loading
-    if (this.props.loading) {
-      mainContent = (<List component={LoadingIndicator} />);
-
-      // Show an error if there is one
-    } else if (this.props.error !== false) {
-      const ErrorComponent = () => (
-        <ListItem item={'Something went wrong, please try again!'} />
-      );
-      mainContent = (<List component={ErrorComponent} />);
-
-      // If we're not loading, don't have an error and there are repos, show the repos
-    } else if (this.props.repos) {
-      mainContent = (<List items={this.props.repos} component={RepoListItem} />);
-    }
+    const { loading, error, repos } = this.props;
+    const reposListProps = {
+      loading,
+      error,
+      repos,
+    };
+    const mainContent = (<ReposList {...reposListProps} />);
 
     return (
       <article>
@@ -151,7 +142,7 @@ export function mapDispatchToProps(dispatch) {
 
 const mapStateToProps = createStructuredSelector({
   repos: selectRepos(),
-  username: selectUsername(),
+  username: makeSelectUsername(),
   loading: selectLoading(),
   error: selectError(),
 });
