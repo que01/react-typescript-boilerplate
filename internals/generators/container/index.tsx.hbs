@@ -4,10 +4,10 @@
  *
  */
 
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 {{#if wantHeaders}}
-import Helmet from 'react-helmet';
+import * Helmet from 'react-helmet';
 {{/if}}
 {{#if wantActionsAndReducer}}
 import select{{properCase name}} from './selectors';
@@ -17,14 +17,30 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 {{/if}}
 {{#if wantCSS}}
-import styles from './styles.css';
+const styles = require('./styles.css');
 {{/if}}
 
-export class {{ properCase name }} extends React.Component { // eslint-disable-line react/prefer-stateless-function
-  render() {
+{{#if wantActionsAndReducer}}
+const mapStateToProps = select{{properCase name}}();
+{{/if}}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+  };
+}
+
+{{#if wantActionsAndReducer}}
+@(connect(mapStateToProps, mapDispatchToProps) as any)
+{{else}}
+@(connect(null, mapDispatchToProps) as any)
+{{/if}}
+export default class {{ properCase name }} extends React.Component<any, any> { // eslint-disable-line react/prefer-stateless-function
+  public render() {
     return (
       {{#if wantCSS}}
       <div className={{curly true}}styles.{{ camelCase name }}{{curly}}>
+          <div>hello world</div>
       {{else}}
       <div>
       {{/if}}
@@ -43,19 +59,3 @@ export class {{ properCase name }} extends React.Component { // eslint-disable-l
     );
   }
 }
-
-{{#if wantActionsAndReducer}}
-const mapStateToProps = select{{properCase name}}();
-{{/if}}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-{{#if wantActionsAndReducer}}
-export default connect(mapStateToProps, mapDispatchToProps)({{ properCase name }});
-{{else}}
-export default connect(null, mapDispatchToProps)({{ properCase name }});
-{{/if}}

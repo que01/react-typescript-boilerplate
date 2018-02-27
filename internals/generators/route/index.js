@@ -6,7 +6,7 @@ const componentExists = require('../utils/componentExists');
 
 function reducerExists(comp) {
   try {
-    fs.accessSync(`app/containers/${comp}/reducer.js`, fs.F_OK);
+    fs.accessSync(`app/containers/${comp}/reducer.ts`, fs.F_OK);
     return true;
   } catch (e) {
     return false;
@@ -15,7 +15,7 @@ function reducerExists(comp) {
 
 function sagasExists(comp) {
   try {
-    fs.accessSync(`app/containers/${comp}/sagas.js`, fs.F_OK);
+    fs.accessSync(`app/containers/${comp}/sagas.ts`, fs.F_OK);
     return true;
   } catch (e) {
     return false;
@@ -54,7 +54,7 @@ module.exports = {
     },
   }],
 
-  // Add the route to the routes.js file above the error route
+  // Add the route to the routes.ts file above the error route
   // TODO smarter route adding
   actions: (data) => {
     const actions = [];
@@ -62,14 +62,14 @@ module.exports = {
       data.useSagas = sagasExists(data.component); // eslint-disable-line no-param-reassign
       actions.push({
         type: 'modify',
-        path: '../../app/routes.js',
+        path: '../../app/routes.ts',
         pattern: /(\s{\n\s{0,}path: '\*',)/g,
         template: trimTemplateFile('routeWithReducer.hbs'),
       });
     } else {
       actions.push({
         type: 'modify',
-        path: '../../app/routes.js',
+        path: '../../app/routes.ts',
         pattern: /(\s{\n\s{0,}path: '\*',)/g,
         template: trimTemplateFile('route.hbs'),
       });

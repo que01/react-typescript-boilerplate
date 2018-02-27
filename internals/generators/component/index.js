@@ -10,7 +10,7 @@ module.exports = {
     type: 'list',
     name: 'type',
     message: 'Select the type of component',
-    default: 'Stateless Function',
+    default: 'ES6 Class',
     choices: () => ['ES6 Class', 'Stateless Function'],
   }, {
     type: 'input',
@@ -32,20 +32,20 @@ module.exports = {
   }, {
     type: 'confirm',
     name: 'wantMessages',
-    default: true,
+    default: false,
     message: 'Do you want i18n messages (i.e. will this component use text)?',
   }],
   actions: (data) => {
     // Generate index.js and index.test.js
     const actions = [{
       type: 'add',
-      path: '../../app/components/{{properCase name}}/index.js',
-      templateFile: data.type === 'ES6 Class' ? './component/es6.js.hbs' : './component/stateless.js.hbs',
+      path: '../../app/components/{{properCase name}}/index.tsx',
+      templateFile: data.type === 'ES6 Class' ? './component/es6.tsx.hbs' : './component/stateless.tsx.hbs',
       abortOnFail: true,
     }, {
       type: 'add',
-      path: '../../app/components/{{properCase name}}/tests/index.test.js',
-      templateFile: './component/test.js.hbs',
+      path: '../../app/components/{{properCase name}}/tests/index.test.tsx',
+      templateFile: './component/test.tsx.hbs',
       abortOnFail: true,
     }];
 
@@ -63,8 +63,8 @@ module.exports = {
     if (data.wantMessages) {
       actions.push({
         type: 'add',
-        path: '../../app/components/{{properCase name}}/messages.js',
-        templateFile: './component/messages.js.hbs',
+        path: '../../app/components/{{properCase name}}/messages.ts',
+        templateFile: './component/messages.ts.hbs',
         abortOnFail: true,
       });
     }
