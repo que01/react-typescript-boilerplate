@@ -1,4 +1,5 @@
 /* eslint-disable global-require */
+import * as path from 'path';
 import * as Express from 'express';
 import * as Path from 'path';
 import * as Compression from 'compression';
@@ -7,6 +8,7 @@ import * as WebpackDevMiddleware from 'webpack-dev-middleware';
 import * as WebpackHotMiddleware from 'webpack-hot-middleware';
 const Pkg = require(Path.resolve(process.cwd(), 'package.json'));
 
+
 export interface IOptions {
   publicPath: string;
   outputPath: string;
@@ -14,6 +16,7 @@ export interface IOptions {
 
 // Dev middleware
 const addDevMiddlewares = (app: Express.Application, webpackConfig: Webpack.Configuration) => {
+  const mock: boolean = process.env.ENABLE_MOCK ? true : false;
   const compiler = Webpack(webpackConfig);
   const middleware = WebpackDevMiddleware(compiler, {
     noInfo: true,
@@ -35,7 +38,15 @@ const addDevMiddlewares = (app: Express.Application, webpackConfig: Webpack.Conf
       res.sendFile(Path.join(process.cwd(), Pkg.dllPlugin.path, filename));
     });
   }
-
+  if (mock) {
+    // https://github.com/webpro/dyson
+    const dyson = require('dyson');
+    const options = {
+      configDir: path.join(__dirname, '../../Mock/services'),
+    };
+    const configs = dyson.getConfigurations(options);
+    dyson.registerServices(app, options, configs);
+  }
   app.get('*', (req, res) => {
     fs.readFile(Path.join(compiler.options.output.path, 'index.html'), (err, file) => {
       if (err) {
