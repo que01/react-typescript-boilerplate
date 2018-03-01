@@ -40,7 +40,7 @@ const addDevMiddlewares = (app: Express.Application, webpackConfig: Webpack.Conf
   }
   if (mock) {
     // https://github.com/webpro/dyson
-    const dyson = require('dyson');
+    const dyson = require('../thirdLibrary/dyson/lib/dyson');
     const options = {
       configDir: path.join(__dirname, '../../Mock/services'),
     };
